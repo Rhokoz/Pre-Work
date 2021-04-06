@@ -1,0 +1,45 @@
+well_height = 125
+daily_advance = 30
+night_retreat = 20
+accumulated_distance = 0
+total_days = 0
+
+print(days)
+
+while accumulated_distance <= well_height:
+    accumulated_distance = accumulated_distance + daily_advance
+    accumulated_distance = accumulated_distance - night_retreat
+    total_days += 1
+
+advance_cm = [30, 21, 33, 77, 44, 45, 23, 45, 12, 34, 55]
+
+accumulated_distance = daily_advance + night_retreat
+
+totalcms = 0
+
+days=0
+count=0
+
+snailhasnotescaped = True
+while snailhasnotescaped:
+    totalcms += advance_cm[count]
+    if totalcms >= well_height:
+        snailhasnotescaped = False
+        break
+
+    days += 1
+
+    totalcms += night_retreat
+    if totalcms >= well_height:
+        snailhasnotescaped = False
+        break
+    count+=1
+
+
+
+print(days)
+
+print("max distance in day=",max(advance_cm))
+print("min distance in day=",min(advance_cm))
+print("avg distance in day=",mean(advance_cm))
+print("standard deviation distance in day=",stdev(advance_cm))
