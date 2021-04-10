@@ -22,16 +22,6 @@ y = [33,66,65,0,59,60,62,64,70,76,80,81,80,83,90,79,61,53,50,49,53,48,45,39]
 #  y = [33,66,65,3,12,5,8]
 x = list(range(len(y)))
 
-# plot
-plt.plot(x, y)
-plt.axhline(y=70, linewidth=1, color='r')
-plt.xlabel('hours')
-plt.ylabel('Temperature ºC')
-plt.title('Temperatures of our server throughout the day')
-plt.text(0.5, 1.0, 'Temperatures of our server throughout the day')
-plt.grid(True)
-# plt.show()
-
 print("\t\nPROBLEM\n")
 
 print("If the sensor detects more than 4 hours with temperatures grater")
@@ -143,7 +133,6 @@ average_24h = sum(list_of_temperatures) / len(list_of_temperatures)
 
 list_of_temperatures_corrected = list(y)
 
-
 for i in positions_with_outliders:
 
     if i == 0:
@@ -181,65 +170,10 @@ y = list_Fahrenheit
 #  y = [33,66,65,3,12,5,8]
 x = list(range(len(y)))
 
-# plot
-plt.plot(x, y)
-plt.axhline(y=70, linewidth=1, color='r')
-plt.xlabel('hours')
-plt.ylabel('Temperature ºF')
-plt.title('Temperatures of our server throughout the day')
-plt.text(0.5, 1.0, 'Temperatures of our server throughout the day')
-plt.grid(True)
-y = list_of_temperatures_corrected
-
 #  y = [33,66,65,3,12,5,8]
 x = list(range(len(y)))
 
-# plot
-plt.plot(x, y)
-plt.axhline(y=70, linewidth=1, color='r')
-plt.xlabel('hours')
-plt.ylabel('Temperature ºC')
-plt.title('Temperatures of our server throughout the day')
-plt.text(0.5, 1.0, 'Temperatures of our server throughout the day')
-plt.grid(True)
-# plt.show()
-hours = 0
-clock = 0
-list_hours = []
-last_print = 0
-consecutive_hours = 4
-
 average_24h_corrected = sum(list_of_temperatures_corrected) / len(list_of_temperatures_corrected)
-
-
-for i in list_of_temperatures_corrected:
-
-    if hours >= 4 or i > 80 or average_24h > 65:
-        if hours >= 4:
-            if last_print != 1:
-                print("\n\t\t--------------------------------")
-                print("\t\t|        W A R N I N G         |")
-                print("\t\t--------------------------------")
-                print("\t\tPlease Change The Cooling System")
-                print("\t\t  More than 4 hours overheating")
-                print("")
-            last_print = 1
-
-            consecutive_hours = consecutive_hours + 1
-        if i > 80:
-            print("\n\t\t--------------------------------")
-            print("\t\t|        W A R N I N G         |")
-            print("\t\t--------------------------------")
-            print("\t\tPlease Change The Cooling System")
-            print("\t\t Temperature is higher than 80ºC  ")
-            print("")
-        if average_24h > 65:
-            print("\n\t\t--------------------------------")
-            print("\t\t|        W A R N I N G         |")
-            print("\t\t--------------------------------")
-            print("\t\tPlease Change The Cooling System")
-            print("\t\tDaily average was higher to 65ºC")
-            print("")
 
     if i >= 70:
         hours += 1
@@ -257,16 +191,6 @@ average_24h_corrected_F = sum(list_Fahrenheit) / len(list_Fahrenheit)
 
 temperature_C_array = []
 temperature_F_array = []
-
-for i in range(len(list_of_temperatures_corrected)):
-    temperature_C_array.append(math.pow(list_of_temperatures_corrected[i] - average_24h_corrected, 2))
-
-SD_temperatures_C = math.sqrt(sum(temperature_C_array)/len(list_of_temperatures_corrected))
-
-for i in range(len(list_Fahrenheit)):
-    temperature_F_array.append(math.pow(list_Fahrenheit[i] - average_24h_corrected_F, 2))
-
-SD_temperatures_F = math.sqrt(sum(temperature_F_array)/len(list_Fahrenheit))
 
 
 print("\nhe average for Celcius values is: ", round(average_24h_corrected,2))
